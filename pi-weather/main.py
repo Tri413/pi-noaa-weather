@@ -43,7 +43,7 @@ def notifyService(maxWind: int, forecasted: str):
 # BEGINING OF EXECUTION
 
 # first parameter can be the IFTTT key
-if sys.argv.count > 1:
+if len(sys.argv) > 1:
     iftttKey = sys.argv[1]
 
 noaaForecast = fetchNOAAForecast(37.50, -77.64, begin, end, params)

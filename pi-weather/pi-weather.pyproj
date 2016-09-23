@@ -12,6 +12,9 @@
     <OutputPath>.</OutputPath>
     <Name>pi-weather</Name>
     <RootNamespace>pi-weather</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>doz4nXqFTYPmsCP3-UtlFw</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
