@@ -2,6 +2,7 @@
 
 import xml.etree.ElementTree
 import urllib.request
+import getopt
 from datetime import datetime
 from datetime import timedelta
 
@@ -10,6 +11,7 @@ wind_threshold = 6 #notification windspeed
 forecast_days = 5
 
 #Setup
+iftttKey =  "SET TO YOUR KEY" # getopt.getopt(args)
 now = datetime.now()
 begin = now + timedelta(days=1)
 end = now + timedelta(days=forecast_days)
@@ -33,8 +35,8 @@ def fetchNOAAForecast(lat: float, lon: float, begin: datetime, end: datetime, no
 
 def notifyService(maxWind: int, forecasted: str):
     print("Max wind: " + str(maxWind))
-    iftttUrl = "https://maker.ifttt.com/trigger/windy_soon/with/key/doz4nXqFTYPmsCP3-UtlFw?value1={0}&value2={1}"
-    urllib.request.urlopen(iftttUrl.format(maxWind, forecasted))
+    iftttUrl = "https://maker.ifttt.com/trigger/windy_soon/with/key/{0}?value1={1}&value2={2}"
+    urllib.request.urlopen(iftttUrl.format(iftttKey, maxWind, forecasted))
     return
 
 #---------------------------------------------------------------------------
