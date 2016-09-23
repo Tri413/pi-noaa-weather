@@ -2,7 +2,7 @@
 
 import xml.etree.ElementTree
 import urllib.request
-import getopt
+import sys, getopt
 from datetime import datetime
 from datetime import timedelta
 
@@ -11,7 +11,7 @@ wind_threshold = 6 #notification windspeed
 forecast_days = 5
 
 #Setup
-iftttKey =  "SET TO YOUR KEY" # getopt.getopt(args)
+iftttKey =  "SET TO YOUR KEY"
 now = datetime.now()
 begin = now + timedelta(days=1)
 end = now + timedelta(days=forecast_days)
@@ -41,6 +41,11 @@ def notifyService(maxWind: int, forecasted: str):
 
 #---------------------------------------------------------------------------
 # BEGINING OF EXECUTION
+
+# first parameter can be the IFTTT key
+if sys.argv.count > 1:
+    iftttKey = sys.argv[1]
+
 noaaForecast = fetchNOAAForecast(37.50, -77.64, begin, end, params)
 rt = xml.etree.ElementTree.fromstring(noaaForecast)
 i = max = maxLoc = 0
